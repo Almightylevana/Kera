@@ -28,7 +28,7 @@
   --color-rust: #A04543;
 
   --font-sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
-  --font-serif: "Fraunces", "Times New Roman", serif;
+  --font-serif: "Lora", "Times New Roman", serif;
 
   --shadow-warm-sm: 0 1px 2px rgba(58, 42, 25, 0.06);
   --shadow-warm: 0 2px 8px rgba(58, 42, 25, 0.08), 0 1px 3px rgba(58, 42, 25, 0.04);
