@@ -71,7 +71,7 @@ export function Wizard({ onComplete }: WizardProps) {
     <section className="min-h-screen bg-paper py-12 px-6 flex flex-col items-center justify-center">
       {/* Small logo at top */}
       <div className="mb-8">
-        <img src={logo} alt="Kera" className="h-16 w-auto select-none" draggable={false} />
+        <img src={logo} alt="Kera" className="h-28 sm:h-32 w-auto select-none" draggable={false} />
       </div>
 
       <div className="max-w-2xl w-full bg-white rounded-3xl shadow-warm-md border border-cream-200 p-6 sm:p-10">
@@ -172,7 +172,7 @@ function Step0({
         <select
           value={data.currency}
           onChange={(e) => update("currency", e.target.value)}
-          className="flex-shrink-0 px-3 sm:px-4 py-4 text-sm sm:text-base font-semibold rounded-xl border border-cream-300 bg-cream-50 focus:bg-white focus:border-clay-500 focus:outline-none text-clay-800 cursor-pointer"
+          className="flex-shrink-0 pl-3 sm:pl-4 pr-8 sm:pr-10 py-4 text-sm sm:text-base font-semibold rounded-xl border border-cream-300 bg-cream-50 focus:bg-white focus:border-clay-500 focus:outline-none text-clay-800 cursor-pointer"
         >
           {["EUR", "USD", "RUB", "GBP"].map((c) => (
             <option key={c}>{c}</option>

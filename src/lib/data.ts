@@ -79,7 +79,7 @@ export const fromCountries: Country[] = [
 // ============================================
 // MOCKED ROUTE GENERATOR
 // ============================================
-export function getRoutes(amount: number, currency: string): Route[] {
+export function getRoutes(amount: number, _currency: string): Route[] {
   return [
     {
       id: "citypay",
