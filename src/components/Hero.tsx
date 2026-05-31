@@ -51,9 +51,7 @@ export function Hero({ onStart }: HeroProps) {
           transition={{ duration: 0.7, delay: 0.15 }}
           className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-clay-800 mb-6 leading-[1.1] tracking-tight"
         >
-          Where every transfer{" "}
-          finds its way{" "}
-          <span className="italic text-clay-600">home</span>.
+          Where every transfer finds its way home.
         </motion.h1>
 
         {/* Subtext */}
