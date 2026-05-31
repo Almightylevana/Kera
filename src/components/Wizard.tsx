@@ -4,6 +4,7 @@ import {
   ArrowLeft,
   ArrowRight,
   Check,
+  ChevronDown,
   Coins,
   MapPin,
   Home,
@@ -169,15 +170,18 @@ function Step0({
           inputMode="decimal"
           className="flex-1 min-w-0 px-4 sm:px-5 py-4 text-xl sm:text-2xl font-semibold rounded-xl border border-cream-300 bg-cream-50 focus:bg-white focus:border-clay-500 focus:outline-none focus:ring-2 focus:ring-clay-500/15 transition text-clay-800"
         />
-        <select
-          value={data.currency}
-          onChange={(e) => update("currency", e.target.value)}
-          className="flex-shrink-0 pl-3 sm:pl-4 pr-8 sm:pr-10 py-4 text-sm sm:text-base font-semibold rounded-xl border border-cream-300 bg-cream-50 focus:bg-white focus:border-clay-500 focus:outline-none text-clay-800 cursor-pointer"
-        >
-          {["EUR", "USD", "RUB", "GBP"].map((c) => (
-            <option key={c}>{c}</option>
-          ))}
-        </select>
+        <div className="relative flex-shrink-0">
+          <select
+            value={data.currency}
+            onChange={(e) => update("currency", e.target.value)}
+            className="appearance-none pl-4 pr-9 py-4 text-sm sm:text-base font-semibold rounded-xl border border-cream-300 bg-cream-50 focus:bg-white focus:border-clay-500 focus:outline-none text-clay-800 cursor-pointer"
+          >
+            {["EUR", "USD", "RUB", "GBP"].map((c) => (
+              <option key={c}>{c}</option>
+            ))}
+          </select>
+          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-clay-500 pointer-events-none" />
+        </div>
       </div>
       <div>
         <p className="text-xs uppercase tracking-wider font-semibold text-stone-400 mb-3">
