@@ -128,6 +128,7 @@ function ResultsContent({ data, onRestart }: ResultsProps) {
 
   const [expandedRoute, setExpandedRoute] = useState<string | null>(null)
   const [showFraud, setShowFraud] = useState(false)
+  const [showGuide, setShowGuide] = useState(false)
 
   return (
     <section className="min-h-screen bg-paper py-12 px-6">
@@ -169,12 +170,48 @@ function ResultsContent({ data, onRestart }: ResultsProps) {
           }
         />
 
-        {/* Step-by-step guide — always shown right after the featured card */}
-        <StepGuide
-          steps={guide}
-          routeName={recommended.name}
-          websiteUrl={recommended.websiteUrl}
-        />
+        {/* Step-by-step toggle — sits right under the featured card, optional reveal */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, delay: 0.1 }}
+          className="mt-4"
+        >
+          <button
+            onClick={() => setShowGuide(!showGuide)}
+            className="w-full flex items-center justify-between gap-3 px-5 py-4 bg-white border border-cream-300 hover:border-clay-400 hover:bg-cream-50 rounded-2xl shadow-warm-sm transition cursor-pointer text-left"
+          >
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 rounded-xl bg-clay-600/10 flex items-center justify-center flex-shrink-0">
+                <Sparkles className="w-4 h-4 text-clay-600" />
+              </div>
+              <div>
+                <p className="font-semibold text-clay-800 text-sm">
+                  {showGuide ? "Hide step-by-step guide" : "Show step-by-step guide"}
+                </p>
+                <p className="text-xs text-clay-600 mt-0.5">
+                  How to send via {recommended.provider} — takes ~15 minutes the first time
+                </p>
+              </div>
+            </div>
+            <ChevronDown
+              className={cn(
+                "w-5 h-5 text-clay-500 flex-shrink-0 transition-transform",
+                showGuide && "rotate-180"
+              )}
+            />
+          </button>
+        </motion.div>
+
+        <AnimatePresence>
+          {showGuide && (
+            <StepGuide
+              steps={guide}
+              routeName={recommended.name}
+              websiteUrl={recommended.websiteUrl}
+            />
+          )}
+        </AnimatePresence>
 
         {/* AI Explanation */}
         <div className="mt-8">
@@ -668,18 +705,14 @@ function StepGuide({
 }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: 0.15 }}
-      className="mt-6"
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: "auto" }}
+      exit={{ opacity: 0, height: 0 }}
+      transition={{ duration: 0.35 }}
+      className="overflow-hidden mt-3"
     >
       <div className="bg-white rounded-2xl shadow-warm border border-cream-200 p-6 sm:p-8">
-        <div className="flex items-center gap-2 mb-1">
-          <span className="text-[10px] font-bold uppercase tracking-widest text-clay-500 bg-cream-200 px-2 py-1 rounded-full">
-            Next step
-          </span>
-        </div>
-        <h3 className="font-serif text-2xl font-medium text-clay-800 mb-1 mt-3">
+        <h3 className="font-serif text-2xl font-medium text-clay-800 mb-1">
           How to send via {routeName}
         </h3>
         <p className="text-sm text-clay-600 mb-6">Step by step. First time setup takes ~15 minutes.</p>

@@ -161,7 +161,7 @@ function Step0({
         How much are you sending?
       </h2>
       <p className="text-clay-600 mb-8">Enter any amount.</p>
-      <div className="flex gap-2 sm:gap-3 mb-6">
+      <div className="flex items-stretch gap-2 sm:gap-3 mb-6">
         <input
           type="number"
           value={data.amount || ""}
@@ -174,7 +174,7 @@ function Step0({
           <select
             value={data.currency}
             onChange={(e) => update("currency", e.target.value)}
-            className="appearance-none pl-4 pr-9 py-4 text-sm sm:text-base font-semibold rounded-xl border border-cream-300 bg-cream-50 focus:bg-white focus:border-clay-500 focus:outline-none text-clay-800 cursor-pointer"
+            className="appearance-none h-full pl-4 pr-9 text-base sm:text-lg font-semibold rounded-xl border border-cream-300 bg-cream-50 focus:bg-white focus:border-clay-500 focus:outline-none text-clay-800 cursor-pointer"
           >
             {["EUR", "USD", "RUB", "GBP"].map((c) => (
               <option key={c}>{c}</option>
